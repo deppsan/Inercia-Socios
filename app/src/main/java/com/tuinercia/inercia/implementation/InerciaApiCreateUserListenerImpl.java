@@ -4,8 +4,6 @@ import android.support.v4.app.DialogFragment;
 
 import com.tuinercia.inercia.DTO.User;
 import com.tuinercia.inercia.R;
-import com.tuinercia.inercia.fragments.CrearCuentaFragment;
-import com.tuinercia.inercia.fragments.CrearCuentaWizard2Fragment;
 import com.tuinercia.inercia.fragments.dialogs.ErrorServerDialog;
 import com.tuinercia.inercia.fragments.dialogs.GeneralDialogFragment;
 import com.tuinercia.inercia.interfaces.InerciaApiCreateUserListener;

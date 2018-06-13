@@ -26,7 +26,6 @@ import com.tuinercia.inercia.fragments.AgendaFragment;
 import com.tuinercia.inercia.fragments.PagosFormularioAltaFragment;
 import com.tuinercia.inercia.fragments.PagosInicioFragment;
 import com.tuinercia.inercia.fragments.ReservacionClasesFragment;
-import com.tuinercia.inercia.fragments.ReservacionGeolocalizacionFragment;
 import com.tuinercia.inercia.implementation.ChangeTitleImpl;
 import com.tuinercia.inercia.network.InerciaApiClient;
 import com.tuinercia.inercia.utils.UtilsSharedPreference;
@@ -36,7 +35,6 @@ import com.tuinercia.inercia.utils.UtilsSharedPreference;
  */
 
 public class MainPage extends AppCompatActivity implements ReservacionClasesFragment.ReservacionClasesListener
-                                                        , ReservacionGeolocalizacionFragment.ReservacionGeolocalizacionListener
                                                         , NavigationView.OnNavigationItemSelectedListener
                                                         , PagosInicioFragment.PagosInicioListener
                                                         , PagosFormularioAltaFragment.PagosFormularioAltaFragmentListener {
@@ -142,13 +140,10 @@ public class MainPage extends AppCompatActivity implements ReservacionClasesFrag
 
     @Override
     public void onClaseSeleccionada(String fragmentTAG, Disciplines disciplineSelected) {
-        ReservacionGeolocalizacionFragment fragment = new ReservacionGeolocalizacionFragment();
+        /**
+         * Al seleccionar el Parlor
+         */
 
-        Bundle args = new Bundle();
-        args.putString(fragment.DISCIPLINE_ARGS, InerciaApiClient.gson.toJson(disciplineSelected));
-
-        fragment.setArguments(args);
-        replaceFragment(R.id.frame_content_main, fragment, fragment.FRAGMENT_TAG, fragmentTAG);
     }
 
 
@@ -165,15 +160,6 @@ public class MainPage extends AppCompatActivity implements ReservacionClasesFrag
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onClickMarkerInfoWindow(Parlor parlor, String discipline) {
-        Intent i = new Intent(this,EstudioAgenda.class);
-        String json_parlor = InerciaApiClient.getInstance(this).gson.toJson(parlor,Parlor.class);
-        i.putExtra(INTENT_EXTRA_HEADER, json_parlor);
-        i.putExtra(INTENT_EXTRA_HEADER_DISCIPLINE, discipline);
-        startActivity(i);
     }
 
     @Override

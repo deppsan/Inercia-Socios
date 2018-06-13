@@ -2,14 +2,12 @@ package com.tuinercia.inercia.implementation;
 
 import android.graphics.BitmapFactory;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tuinercia.inercia.DTO.Parlor;
 import com.tuinercia.inercia.R;
-import com.tuinercia.inercia.fragments.ReservacionGeolocalizacionFragment;
 import com.tuinercia.inercia.fragments.dialogs.ErrorConexionDialog;
 import com.tuinercia.inercia.fragments.dialogs.ErrorServerDialog;
 import com.tuinercia.inercia.interfaces.InerciaApiGetParlorsListener;

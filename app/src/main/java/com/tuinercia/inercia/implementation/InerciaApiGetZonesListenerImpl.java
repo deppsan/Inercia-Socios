@@ -4,7 +4,6 @@ import android.support.v4.app.DialogFragment;
 import android.widget.ArrayAdapter;
 
 import com.tuinercia.inercia.DTO.Zone;
-import com.tuinercia.inercia.fragments.ReservacionGeolocalizacionFragment;
 import com.tuinercia.inercia.fragments.dialogs.ErrorConexionDialog;
 import com.tuinercia.inercia.fragments.dialogs.ErrorServerDialog;
 import com.tuinercia.inercia.interfaces.InerciaApiGetZonesListener;

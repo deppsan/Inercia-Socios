@@ -16,10 +16,6 @@
                 android:id="@+id/nav_pagos"
                 android:icon="@drawable/pagos_black"
                 android:title="@string/nav_mi_cuenta"/>
-            <!--<item
-                android:id="@+id/nav_salir"
-                android:icon="@drawable/logout_rounded"
-                android:title="@string/nav_logOut"/>-->
         </menu>
     </item>
 </menu>

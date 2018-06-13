@@ -13,16 +13,10 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.tuinercia.inercia.R;
-import com.tuinercia.inercia.fragments.CrearCuentaFragment;
-import com.tuinercia.inercia.fragments.CrearCuentaWizard2Fragment;
 import com.tuinercia.inercia.fragments.LoginFragment;
-import com.tuinercia.inercia.fragments.LoginOptionFragment;
 import com.tuinercia.inercia.utils.UtilsSharedPreference;
 
-public class LoginMain extends AppCompatActivity implements LoginOptionFragment.LoginOptionListener
-                                                            , LoginFragment.LoginListener
-                                                            , CrearCuentaFragment.CrearCuentaListener
-                                                            , CrearCuentaWizard2Fragment.CrearCuentaListener2{
+public class LoginMain extends AppCompatActivity implements  LoginFragment.LoginListener{
 
     FrameLayout frame_content;
 
@@ -46,7 +40,7 @@ public class LoginMain extends AppCompatActivity implements LoginOptionFragment.
         if(UtilsSharedPreference.getInstance(this).isLoggedIn()){
             goToMainPage();
         }else{
-            addFragment(R.id.frame_content, new LoginOptionFragment(),LoginOptionFragment.FRAGMENT_TAG);
+            addFragment(R.id.frame_content, new LoginFragment(),LoginFragment.FRAGMENT_TAG);
         }
     }
 
@@ -85,16 +79,6 @@ public class LoginMain extends AppCompatActivity implements LoginOptionFragment.
     }
 
     @Override
-    public void OnClickBtnLogin(String FragmentAnterior) {
-        replaceFragment(R.id.frame_content, LoginFragment.getInstance(null, null, false),LoginFragment.FRAGMENT_TAG,FragmentAnterior);
-    }
-
-    @Override
-    public void OnClickBtnSignUp(String FragmentAnterior) {
-        replaceFragment(R.id.frame_content,new CrearCuentaFragment(),CrearCuentaFragment.FRAGMENT_TAG,FragmentAnterior);
-    }
-
-    @Override
     public void onClickButtonLogin() {
         goToMainPage();
     }
@@ -104,27 +88,6 @@ public class LoginMain extends AppCompatActivity implements LoginOptionFragment.
         startActivity(intent);
         finish();
     }
-
-    @Override
-    public void goToNextStep(String email, String password, String FragmentAnterior) {
-        Bundle args = new Bundle();
-        CrearCuentaWizard2Fragment crearCuentaWizard2Fragment = new CrearCuentaWizard2Fragment();
-
-        args.putString(CrearCuentaWizard2Fragment.EMAIL_FRAGMENT_PARAM, email);
-        args.putString(CrearCuentaWizard2Fragment.PASSWORD_FRAGMENT_PARAM, password);
-
-        crearCuentaWizard2Fragment.setArguments(args);
-
-        replaceFragment(R.id.frame_content, crearCuentaWizard2Fragment,crearCuentaWizard2Fragment.FRAGMENT_TAG,FragmentAnterior);
-    }
-
-
-    @Override
-    public void onCrearCuenta(String FragmentAnterior, String user, String password) {
-        replaceFragment(R.id.frame_content, LoginFragment.getInstance(user, password, true),LoginFragment.FRAGMENT_TAG,FragmentAnterior);
-    }
-
-
 }
 
 
